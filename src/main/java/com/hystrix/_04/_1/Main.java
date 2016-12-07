@@ -18,15 +18,17 @@ public class Main {
                 .withGroupKey(HystrixCommandGroupKey.Factory.asKey("group-key"))
                 .andThreadPoolPropertiesDefaults(
                         HystrixThreadPoolProperties.Setter().withCoreSize(1)
-//                        .withMaximumSize(2)
-//                        .withAllowMaximumSizeToDivergeFromCoreSize(true)
-//                        .withMaxQueueSize(10)
-//                        .withQueueSizeRejectionThreshold(10)
+
+//                        .withMaximumSize(3)
+//                        .withAllowMaximumSizeToDivergeFromCoreSize(true) //both properties together
+
+//                        .withMaxQueueSize(3)
+//                        .withQueueSizeRejectionThreshold(1)
                 );
         logger.info("Before launching command");
 
         for(int i=0; i<TOTAL_TASKS; i++) {
-            SimpleCommand simpleCommand = new SimpleCommand(setter.andCommandKey(HystrixCommandKey.Factory.asKey("cmd" + i)));
+            SimpleCommand simpleCommand = new SimpleCommand(setter.andCommandKey(HystrixCommandKey.Factory.asKey("cmd")));
             simpleCommand.observe();
             logger.info(simpleCommand.getCommandKey().name() + " rejected? " + simpleCommand.isResponseRejected());
         }

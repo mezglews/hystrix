@@ -17,12 +17,15 @@ public class Main {
 
     public static void main(String[] args) {
 
-        HystrixCommandGroupKey groupKey = HystrixCommandGroupKey.Factory.asKey("CommandWithFallbackGroup");
-        CommandWithFallback commandWithFallback = new CommandWithFallback(groupKey);
+        HystrixCommandGroupKey groupKey = HystrixCommandGroupKey.Factory.asKey("FailingCommandGroup");
+        CommandWithFallback command = new CommandWithFallback(groupKey);
+//        CommandWithoutFallback command = new CommandWithoutFallback(groupKey);
 
         logger.info("Before launching command");
-        List<String> result = commandWithFallback.execute();
-        logger.info("Got list: " + result);
+        command.toObservable()
+                .doOnError(e -> logger.error("Command failed!", e))
+                .subscribe(list -> logger.info("Got list: " + list));
+
 
         logger.info("After launching command");
 

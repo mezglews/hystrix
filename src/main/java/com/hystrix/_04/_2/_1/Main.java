@@ -1,7 +1,8 @@
-package com.hystrix._04._2;
+package com.hystrix._04._2._1;
 
 
 import com.hystrix.Utils;
+import com.hystrix._04._2.SimpleCommand;
 import com.netflix.hystrix.*;
 import org.apache.log4j.Logger;
 
@@ -15,9 +16,8 @@ public class Main {
         HystrixCommand.Setter setter = HystrixCommand.Setter
                 .withGroupKey(HystrixCommandGroupKey.Factory.asKey("group-key"))
                 .andCommandPropertiesDefaults(
-                        HystrixCommandProperties.Setter().withExecutionIsolationStrategy(SEMAPHORE)
-                                .withExecutionIsolationSemaphoreMaxConcurrentRequests(5)
-
+                        HystrixCommandProperties.Setter().withExecutionIsolationStrategy(THREAD)
+                                .withExecutionIsolationSemaphoreMaxConcurrentRequests(2)
                 );
 
 
@@ -26,7 +26,7 @@ public class Main {
         for (int i = 0; i < TOTAL_TASKS; i++) {
             SimpleCommand simpleCommand = new SimpleCommand(setter.andCommandKey(HystrixCommandKey.Factory.asKey("cmd" + i)));
 
-            simpleCommand.observe();
+            simpleCommand.execute();
         }
 
         logger.info("After launching command");
