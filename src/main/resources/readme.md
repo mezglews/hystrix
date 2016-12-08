@@ -19,10 +19,10 @@
         - command exception,
         - timeout (add more than 1 sec),
         - shorcircuit (uncomment withCircuitBreakerForceOpen)
-        - rejectedThreadExecuiton?????????????????/
+        - rejectedThreadExecution?????????????????/
     5.2 HystrixBadRequestException (fallback)
     5.3 unwrapHystrixException() - show code from UMG ?
-6. Hystrix dashboard
-7. Request caching - use HystrixRequestContext, show what happened when close context and reinit
-8. Request batching
-9. Request collapsing
+6. Request caching - use HystrixRequestContext, show what happened when close context and reinit
+7. Request batching/collapsing - configure withTimerDelayInMilliseconds (delay), and withMaxRequestsInBatch, without HystrixRequestContext no exception!!
+8. Hystrix dashboard
+
