@@ -1,6 +1,9 @@
 package com.hystrix._07;
 
 import com.hystrix.Utils;
+import com.netflix.hystrix.HystrixEventType;
+import com.netflix.hystrix.HystrixInvokableInfo;
+import com.netflix.hystrix.HystrixRequestLog;
 import com.netflix.hystrix.strategy.concurrency.HystrixRequestContext;
 import org.apache.log4j.Logger;
 
@@ -27,6 +30,20 @@ public class Main {
         collapser5.observe();
 
         LOGGER.info("After launching command");
+
+
+        Utils.sleep(15_000);
+        int numExecuted = HystrixRequestLog.getCurrentRequest().getAllExecutedCommands().size();
+
+        LOGGER.info("Total executed: " + numExecuted);
+
+        for (HystrixInvokableInfo<?> command : HystrixRequestLog.getCurrentRequest().getAllExecutedCommands()) {
+            String name = command.getCommandKey().name();
+            boolean collapsed = command.getExecutionEvents().contains(HystrixEventType.COLLAPSED);
+            boolean success = command.getExecutionEvents().contains(HystrixEventType.SUCCESS);
+            LOGGER.info("Command " + name +" collapsed? " + collapsed + "  success? " + success);
+        }
+
 
         Utils.sleep(30_000);
 
