@@ -22,7 +22,12 @@
         - rejectedThreadExecution?????????????????/
     5.2 HystrixBadRequestException (fallback)
     5.3 unwrapHystrixException() - show code from UMG ?
+
 6. Request caching - use HystrixRequestContext, show what happened when close context and reinit
+
 7. Request batching/collapsing - configure withTimerDelayInMilliseconds (delay), and withMaxRequestsInBatch, without HystrixRequestContext no exception!!
-8. Hystrix dashboard
+
+8. Issue with MDC
+
+9. Hystrix dashboard
 
