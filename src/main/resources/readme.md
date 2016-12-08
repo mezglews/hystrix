@@ -23,6 +23,6 @@
     5.2 HystrixBadRequestException (fallback)
     5.3 unwrapHystrixException() - show code from UMG ?
 6. Hystrix dashboard
-8. Request caching
-6. Request batching
-7. Request collapsing
+7. Request caching - use HystrixRequestContext, show what happened when close context and reinit
+8. Request batching
+9. Request collapsing
