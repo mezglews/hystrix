@@ -19,7 +19,7 @@
         - command exception,
         - timeout (add more than 1 sec),
         - shorcircuit (uncomment withCircuitBreakerForceOpen)
-        - rejectedThreadExecution?????????????????/
+        - rejectedThreadExecution?????????????????
     5.2 HystrixBadRequestException (fallback)
     5.3 unwrapHystrixException() - show code from UMG ?
 
@@ -29,5 +29,5 @@
 
 8. Issue with MDC
 
-9. Hystrix dashboard
+9. Hystrix dashboard (open Web project, run Hystrix Dasbhoard from CMD, us ab.exe)
 
