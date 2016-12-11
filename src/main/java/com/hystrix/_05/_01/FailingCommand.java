@@ -2,7 +2,7 @@ package com.hystrix._05._01;
 
 import com.hystrix.Utils;
 import com.netflix.hystrix.HystrixCommand;
-import com.netflix.hystrix.HystrixCommandGroupKey;
+import org.apache.log4j.Logger;
 
 import java.util.Collections;
 import java.util.List;
@@ -12,6 +12,8 @@ import java.util.List;
  * Date: 2016-12-07
  */
 public class FailingCommand extends HystrixCommand<List<String>> {
+    private static final Logger LOGGER = Logger.getLogger(FailingCommand.class);
+
     private final int sleepInMs;
 
     public FailingCommand(Setter setter) {
@@ -25,6 +27,7 @@ public class FailingCommand extends HystrixCommand<List<String>> {
     }
     @Override
     protected List<String> run() throws Exception {
+        LOGGER.info("Started command execution");
         if(sleepInMs > 0) {
             Utils.sleep(sleepInMs);
         }

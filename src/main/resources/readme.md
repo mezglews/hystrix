@@ -19,7 +19,7 @@
         - command exception,
         - timeout (add more than 1 sec),
         - shorcircuit (uncomment withCircuitBreakerForceOpen)
-        - rejectedThreadExecution?????????????????
+        - rejectedThreadExecution (ToManyCommandsMain)
     5.2 HystrixBadRequestException (fallback)
     5.3 unwrapHystrixException() - show code from UMG ?
 
