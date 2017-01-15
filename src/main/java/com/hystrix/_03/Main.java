@@ -14,8 +14,8 @@ public class Main {
     public static void main(String[] args) {
 
         HystrixCommandGroupKey groupKey = HystrixCommandGroupKey.Factory.asKey("FailingCommandGroup");
-//        CommandWithFallback command = new CommandWithFallback(groupKey);
         CommandWithoutFallback command = new CommandWithoutFallback(groupKey);
+//        CommandWithFallback command = new CommandWithFallback(groupKey);
 
         logger.info("Before launching command");
         command.toObservable()

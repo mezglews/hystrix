@@ -1,6 +1,8 @@
-package com.hystrix._02;
+package com.hystrix._01._3;
 
+import com.hystrix.Utils;
 import com.netflix.hystrix.HystrixCommand;
+import com.netflix.hystrix.HystrixCommandGroupKey;
 import org.apache.log4j.Logger;
 
 /**
@@ -10,13 +12,14 @@ import org.apache.log4j.Logger;
 public class SimpleCommand extends HystrixCommand<Void> {
     private final static Logger logger = Logger.getLogger(SimpleCommand.class);
 
-    protected SimpleCommand(Setter setter) {
-        super(setter);
+    public SimpleCommand(HystrixCommandGroupKey hystrixCommandGroupKey) {
+        super(hystrixCommandGroupKey);
     }
 
     @Override
     protected Void run() throws Exception {
-        logger.info("Executing command " + this.getCommandKey().name());
+        logger.info("Executing simple command");
+        Utils.sleep(500);
         return null;
     }
 }

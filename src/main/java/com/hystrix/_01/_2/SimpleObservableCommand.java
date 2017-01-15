@@ -1,6 +1,5 @@
 package com.hystrix._01._2;
 
-import com.hystrix._01._1.SimpleCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import com.netflix.hystrix.HystrixObservableCommand;
 import org.apache.log4j.Logger;
@@ -26,7 +25,7 @@ public class SimpleObservableCommand extends HystrixObservableCommand<String>{
                 try {
                     if (!observer.isUnsubscribed()) {
                         logger.info("Doing some network call.. ");
-                        observer.onNext("RESPONSE");
+                        observer.onNext("RESPONSE1");
                         observer.onCompleted();
                     }
                 } catch (Exception e) {

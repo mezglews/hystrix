@@ -1,7 +1,6 @@
 package com.hystrix._01._3;
 
 import com.hystrix.Utils;
-import com.hystrix._01._1.SimpleCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import com.netflix.hystrix.exception.HystrixRuntimeException;
 import org.apache.log4j.Logger;
@@ -21,12 +20,7 @@ public class Main {
         SimpleCommand command = new SimpleCommand(groupKey);
 
         logger.info("Before launching command");
-        try {
-            command.execute();
-            command.execute();
-        } catch (HystrixRuntimeException e) {
-            logger.error(e);
-        }
+
 
         logger.info("After launching command");
 

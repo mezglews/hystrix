@@ -3,8 +3,10 @@ package com.hystrix._01._1;
 import com.hystrix.Utils;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import org.apache.log4j.Logger;
+import rx.Observable;
 
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 /**
  * User: Szymon Mezglewski
@@ -19,6 +21,8 @@ public class Main {
         SimpleCommand command = new SimpleCommand(groupKey);
 
         logger.info("Before launching command");
+
+
 
         logger.info("After launching command");
 

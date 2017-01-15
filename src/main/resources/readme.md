@@ -13,14 +13,15 @@
 ##### 4.1 own thread pools (coreSize, maximumSize with withAllowMaximumSizeToDivergeFromCoreSize, queueSize) rejections
 #####4.2 isolation strategy - semaphore vs thread
 ######4.2.1 - thread
-######4.2.1 - semaphore (show what will happen when provide different command key like using counter
+######4.2.2 - semaphore (show what will happen when provide different command key like using counter
+######4.2.3 - withExecutionIsolationThreadTimoutInMilliseconds
 #####4.3 ignoring rxjava observeOn() and subscribeOn() - executing observable in hystrixCommand, observeOn() execuites post hystrix in other thread
 
 ## 5. Hystrix error handling
 ##### 5.1 HystrixRuntimeException (failure types)
         - command exception,
         - timeout (add more than 1 sec),
-        - shorcircuit (uncomment withCircuitBreakerForceOpen)
+        - shortcircuit (uncomment withCircuitBreakerForceOpen)
         - rejectedThreadExecution (ToManyCommandsMain)
 ##### 5.2 HystrixBadRequestException (fallback)
 ##### 5.3 unwrapHystrixException() - show code from UMG ?

@@ -20,6 +20,7 @@ public class Main {
                 .andCommandKey(HystrixCommandKey.Factory.asKey("CommandKey"))
                 .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("ThreadPool-key"))
                 .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter().withCoreSize(10))
+
                 .andCommandPropertiesDefaults(
                         HystrixCommandProperties.Setter()
                             .withCircuitBreakerEnabled(true)
