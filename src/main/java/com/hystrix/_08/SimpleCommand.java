@@ -12,8 +12,8 @@ import org.apache.log4j.Logger;
 public class SimpleCommand extends HystrixCommand<String> {
     private final static Logger logger = Logger.getLogger(SimpleCommand.class);
 
-    public SimpleCommand(HystrixCommandGroupKey hystrixCommandGroupKey) {
-        super(hystrixCommandGroupKey);
+    public SimpleCommand(Setter setter) {
+        super(setter);
     }
 
     @Override

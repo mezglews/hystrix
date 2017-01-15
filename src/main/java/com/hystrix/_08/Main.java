@@ -1,9 +1,13 @@
 package com.hystrix._08;
 
 import com.hystrix.Utils;
+import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
+import com.netflix.hystrix.HystrixCommandKey;
+import com.netflix.hystrix.HystrixThreadPoolProperties;
 import org.apache.log4j.Logger;
 import org.apache.log4j.MDC;
+import rx.Observable;
 
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
@@ -19,14 +23,27 @@ public class Main {
         MDC.put("transactionGUID", UUID.randomUUID().toString());
 
 
-        HystrixCommandGroupKey groupKey = HystrixCommandGroupKey.Factory.asKey("BasicCommandsGroup");
-        SimpleCommand command = new SimpleCommand(groupKey);
+        HystrixCommand.Setter setter = HystrixCommand.Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("BasicCommandsGroup"))
+                .andCommandKey(HystrixCommandKey.Factory.asKey("cmd"))
+                .andThreadPoolPropertiesDefaults(
+                        HystrixThreadPoolProperties.Setter()
+                                .withCoreSize(10)
+                                .withMaximumSize(19)
+                                .withAllowMaximumSizeToDivergeFromCoreSize(true)
+                );
+
+        for(int i=0; i< 20;i ++) {
+            SimpleCommand command = new SimpleCommand(setter);
+            command.toObservable()
+                    .onErrorResumeNext(error -> Observable.empty())
+                    .subscribe(next -> logger.info(next));
+        }
+
 
         logger.info("Before launching command");
 
 
-        command.toObservable()
-                .subscribe(next -> logger.info(next));
+
 
         logger.info("After launching command");
 
