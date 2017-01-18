@@ -13,7 +13,7 @@ public class ClientSecurityGateway {
 
     private static final Random RANDOM = new Random();
 
-    public User getClientIdForCST(String cst) {
+    public User getUserForCST(String cst) {
         return new User(String.valueOf(RANDOM.nextInt(Integer.MAX_VALUE)));
     }
 

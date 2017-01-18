@@ -32,7 +32,6 @@ public class FailingCommand extends HystrixCommand<List<String>> {
             Utils.sleep(sleepInMs);
         }
         throw new RuntimeException("Cannot get something from remote service.");
-//        return Collections.emptyList();
     }
 
 }

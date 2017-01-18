@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
 import static com.netflix.hystrix.HystrixCommandProperties.ExecutionIsolationStrategy.*;
 
 public class Main {
-    private static final int TOTAL_TASKS = 40;
+    private static final int TOTAL_TASKS = 15;
     private final static Logger logger = Logger.getLogger(Main.class);
 
     public static void main(String[] args) {
@@ -17,14 +17,13 @@ public class Main {
                 .withGroupKey(HystrixCommandGroupKey.Factory.asKey("group-key"))
                 .andCommandPropertiesDefaults(
                         HystrixCommandProperties.Setter().withExecutionIsolationStrategy(THREAD)
-                                .withExecutionIsolationSemaphoreMaxConcurrentRequests(2)
                 );
 
 
         logger.info("Before launching command");
 
         for (int i = 0; i < TOTAL_TASKS; i++) {
-            SimpleCommand simpleCommand = new SimpleCommand(setter.andCommandKey(HystrixCommandKey.Factory.asKey("cmd" + i)));
+            SimpleCommand simpleCommand = new SimpleCommand(setter.andCommandKey(HystrixCommandKey.Factory.asKey("cmd")));
 
             simpleCommand.execute();
         }

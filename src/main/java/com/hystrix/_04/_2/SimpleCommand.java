@@ -15,6 +15,7 @@ public class SimpleCommand extends HystrixCommand<Void> {
     protected Void run() throws Exception {
         logger.info("Executing simple command..");
         Utils.sleep(300);
+        logger.info("Command executed");
         return null;
     }
 }

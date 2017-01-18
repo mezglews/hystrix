@@ -34,7 +34,7 @@ public class BatchCommand extends HystrixCommand< Map<String, User> > {
         for (HystrixCollapser.CollapsedRequest<User, String> request : requests) {
             String cst = request.getArgument();
             LOGGER.info("Sending request to CSG for given cst: " + cst);
-            cstToUserMap.put(cst, clientSecurityGateway.getClientIdForCST(cst));
+            cstToUserMap.put(cst, clientSecurityGateway.getUserForCST(cst));
         }
 
         return cstToUserMap;

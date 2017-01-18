@@ -9,11 +9,14 @@ import com.netflix.hystrix.HystrixCommandKey;
 import com.netflix.hystrix.HystrixCommandProperties;
 import org.apache.log4j.Logger;
 
+import java.util.Random;
+
 import static com.netflix.hystrix.HystrixCommandProperties.ExecutionIsolationStrategy.SEMAPHORE;
 
 public class Main {
     private static final int TOTAL_TASKS = 4;
     private final static Logger logger = Logger.getLogger(Main.class);
+    private final static Random random = new Random();
 
     public static void main(String[] args) throws InterruptedException {
         HystrixCommand.Setter setter = HystrixCommand.Setter

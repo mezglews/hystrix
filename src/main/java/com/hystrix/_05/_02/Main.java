@@ -21,7 +21,7 @@ public class Main {
         LOGGER.info("Before launching command");
         try {
             FailingCommand command = new FailingCommand(setter);
-//            FailingCommandWithUselessFallback command = new FailingCommandWithUselessFallback(setter);
+//            FailingCommandWithFallback command = new FailingCommandWithFallback(setter);
             command.execute();
         } catch (HystrixBadRequestException e) {
             LOGGER.error("Command failed: ", e);

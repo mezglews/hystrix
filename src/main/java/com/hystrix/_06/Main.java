@@ -17,8 +17,8 @@ public class Main {
                 .withGroupKey(HystrixCommandGroupKey.Factory.asKey("group-key"))
                 .andCommandKey(HYSTRIX_COMMAND_KEY);
 
-        //Since this depends on request context we must initialize the HystrixRequestContext.
 //        HystrixRequestContext context = HystrixRequestContext.initializeContext();
+
 
         LOGGER.info("Before launching command");
         CommandUsingRequestCache commandUsingRequestCache1 = new CommandUsingRequestCache(setter, "value");

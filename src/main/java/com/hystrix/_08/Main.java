@@ -15,28 +15,33 @@ import java.util.concurrent.ExecutionException;
 /**
  * User: Szymon Mezglewski
  * Date: 2016-12-01
+ * http://netflix.github.io/Hystrix/javadoc/com/netflix/hystrix/strategy/concurrency/HystrixConcurrencyStrategy.html#wrapCallable(java.util.concurrent.Callable)
  */
 public class Main {
     private final static Logger logger = Logger.getLogger(Main.class);
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        MDC.put("transactionGUID", UUID.randomUUID().toString());
+
 
 
         HystrixCommand.Setter setter = HystrixCommand.Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("BasicCommandsGroup"))
                 .andCommandKey(HystrixCommandKey.Factory.asKey("cmd"))
                 .andThreadPoolPropertiesDefaults(
                         HystrixThreadPoolProperties.Setter()
-                                .withCoreSize(10)
-                                .withMaximumSize(19)
-                                .withAllowMaximumSizeToDivergeFromCoreSize(true)
+                                .withCoreSize(20)
                 );
 
         for(int i=0; i< 20;i ++) {
-            SimpleCommand command = new SimpleCommand(setter);
-            command.toObservable()
-                    .onErrorResumeNext(error -> Observable.empty())
-                    .subscribe(next -> logger.info(next));
+            Thread t = new Thread(() -> {
+                MDC.put("transactionGUID", UUID.randomUUID().toString());
+                SimpleCommand command = new SimpleCommand(setter);
+                logger.info(command.execute());
+            });
+            t.start();
+
+//            command.toObservable()
+//                    .onErrorResumeNext(error -> Observable.empty())
+//                    .subscribe(next -> logger.info(next));
         }
 
 

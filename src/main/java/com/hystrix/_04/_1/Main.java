@@ -22,6 +22,8 @@ public class Main {
 //                        .withMaximumSize(3)
 //                        .withAllowMaximumSizeToDivergeFromCoreSize(true) //both properties together
 
+//                          .withKeepAliveTimeMinutes(1)
+
 //                        .withMaxQueueSize(3)
 //                        .withQueueSizeRejectionThreshold(1)
                 );
@@ -30,7 +32,9 @@ public class Main {
         for(int i=0; i<TOTAL_TASKS; i++) {
             SimpleCommand simpleCommand = new SimpleCommand(setter.andCommandKey(HystrixCommandKey.Factory.asKey("cmd")));
             simpleCommand.observe();
-            logger.info(simpleCommand.getCommandKey().name() + " rejected? " + simpleCommand.isResponseRejected());
+            logger.info(simpleCommand.getCommandKey().name() +
+                    " response rejected? " + simpleCommand.isResponseRejected() +
+                    ", threadPool rejected? " + simpleCommand.isResponseThreadPoolRejected());
         }
 
         logger.info("After launching command");

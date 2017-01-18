@@ -23,11 +23,15 @@ public class Main {
 
                 .andCommandPropertiesDefaults(
                         HystrixCommandProperties.Setter()
-                            .withCircuitBreakerEnabled(true)
-                            .withExecutionIsolationStrategy(HystrixCommandProperties.ExecutionIsolationStrategy.THREAD)
-                            .withCircuitBreakerSleepWindowInMilliseconds(100)
+                                .withCircuitBreakerEnabled(true)
+//                                .withCircuitBreakerForceOpen(true)
+                                .withExecutionIsolationStrategy(HystrixCommandProperties.ExecutionIsolationStrategy.THREAD)
+                                .withCircuitBreakerSleepWindowInMilliseconds(100)
                 )
         );
+
+//        HystrixCircuitBreaker hystrixCircuitBreaker = null;
+
 
         Observable<Void> observable = simpleCommand.toObservable();
         observable.subscribe(aVoid -> logger.info("Done!"));

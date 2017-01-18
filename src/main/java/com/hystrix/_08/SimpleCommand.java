@@ -4,6 +4,7 @@ import com.hystrix.Utils;
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import org.apache.log4j.Logger;
+import org.apache.log4j.MDC;
 
 /**
  * User: Szymon Mezglewski
@@ -19,6 +20,7 @@ public class SimpleCommand extends HystrixCommand<String> {
     @Override
     protected String run() throws Exception {
         logger.info("Executing simple command");
+        logger.info("FROM MDC: " + MDC.get("transactionGUID"));
         Utils.sleep(500);
         return "result";
     }

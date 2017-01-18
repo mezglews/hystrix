@@ -10,8 +10,8 @@ import java.util.List;
  * User: Szymon Mezglewski
  * Date: 2016-12-07
  */
-public class FailingCommandWithUselessFallback extends HystrixCommand<List<String>> {
-    public FailingCommandWithUselessFallback(Setter setter) {
+public class FailingCommandWithFallback extends HystrixCommand<List<String>> {
+    public FailingCommandWithFallback(Setter setter) {
         super(setter);
     }
 

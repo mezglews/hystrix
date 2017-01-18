@@ -23,6 +23,7 @@ public class Main {
         LOGGER.info("Before launching command");
         try {
             FailingCommand command = new FailingCommand(setter);
+//            FailingCommand command = new FailingCommand(setter, 1100);
             command.execute();
         } catch (HystrixRuntimeException e) {
             LOGGER.error("Command failed: ", e);

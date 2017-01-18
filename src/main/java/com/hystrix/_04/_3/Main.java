@@ -23,8 +23,7 @@ public class Main {
         logger.info("Before launching command");
         command
                 .toObservable()
-                .subscribeOn(Schedulers.computation())
-//                .observeOn(Schedulers.computation())
+
                 .subscribe(aVoid -> logger.info("Finished task!"));
 
         logger.info("After launching command");

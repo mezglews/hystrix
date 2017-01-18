@@ -14,7 +14,6 @@
 #####4.2 isolation strategy - semaphore vs thread
 ######4.2.1 - thread
 ######4.2.2 - semaphore (show what will happen when provide different command key like using counter
-######4.2.3 - withExecutionIsolationThreadTimoutInMilliseconds
 #####4.3 ignoring rxjava observeOn() and subscribeOn() - executing observable in hystrixCommand, observeOn() execuites post hystrix in other thread
 
 ## 5. Hystrix error handling
@@ -23,8 +22,8 @@
         - timeout (add more than 1 sec),
         - shortcircuit (uncomment withCircuitBreakerForceOpen)
         - rejectedThreadExecution (ToManyCommandsMain)
-##### 5.2 HystrixBadRequestException (fallback)
-##### 5.3 unwrapHystrixException() - show code from UMG ?
+##### 5.2 HystrixBadRequestException
+##### 5.3 unwrapHystrixException()
 
 ## 6. Request caching - use HystrixRequestContext, show what happened when close context and reinit
 
@@ -34,4 +33,6 @@
 ## 8. Issue with MDC
 
 ## 9. Hystrix dashboard (open Web project, run Hystrix Dasbhoard from CMD, us ab.exe)
+
+??HystrixRequestLog
 

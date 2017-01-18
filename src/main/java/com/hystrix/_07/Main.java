@@ -23,11 +23,11 @@ public class Main {
         CommandCollapserGetClientIdForCST collapser4 = new CommandCollapserGetClientIdForCST(csg, "ccc");
         CommandCollapserGetClientIdForCST collapser5 = new CommandCollapserGetClientIdForCST(csg, "aaa");
 
-        collapser1.observe();
-        collapser2.observe();
-        collapser3.observe();
-        collapser4.observe();
-        collapser5.observe();
+        collapser1.toObservable().subscribe(e -> LOGGER.info("Response: " + e));
+        collapser2.toObservable().subscribe(e -> LOGGER.info("Response: " + e));
+        collapser3.toObservable().subscribe(e -> LOGGER.info("Response: " + e));
+        collapser4.toObservable().subscribe(e -> LOGGER.info("Response: " + e));
+        collapser5.toObservable().subscribe(e -> LOGGER.info("Response: " + e));
 
         LOGGER.info("After launching command");
 
