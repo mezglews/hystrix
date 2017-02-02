@@ -4,6 +4,7 @@
 ##### 1.1 observe() vs execute() vs queue()
 ##### 1.2 HystrixObservableCommand - observe(), toObservable()
 ##### 1.3 Reusing command
+##### 1.4 Hystrix observeOn() and subsequent heavy operations on stream
 
 ## 2. Command configuration
 

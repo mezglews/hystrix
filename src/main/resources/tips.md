@@ -54,6 +54,9 @@ NonBlocking execution - notify subscriber once new element coming in
              logger.error(e);
          }
          `
+         
+##### 1.4 Hystrix observeOn()  and executing heavy operation - without observeOn everything is executed on hystrix thread
+
 ## 2. Command configuration
 Run Main and show whats logged etc
 
@@ -67,7 +70,23 @@ If we logically want these commands grouped together but want them isolated diff
 *andThreadPoolPropertiesDefaults - coreSize()*
 Discussed in chapter 4 - settings for thread pool and command execution strategy
 
-*CircuitBreakerSleepWindowInMilliseconds()*
+#####2.2 CB properties
+
+CB properties
+
+*withCircuitBreakerRequestVolumeThreshold()*
+Minimum number of requests in the metricsRollingStatisticalWindowInMilliseconds() that must exist before the HystrixCircuitBreaker will trip.
+This property sets the minimum number of requests in a rolling window that will trip the circuit.
+
+For example, if the value is 20, then if only 19 requests are received in the rolling window (say a window of 10 seconds) the circuit will not trip open even if all 19 failed.
+
+*.withCircuitBreakerErrorThresholdPercentage()*
+Error percentage threshold (as whole number such as 50) at which point the circuit breaker will trip open and reject requests.
+
+*withMetricsRollingStatisticalWindowInMilliseconds()*
+Duration of statistical rolling window in milliseconds.
+
+*withCircuitBreakerSleepWindowInMilliseconds()*
 The time in milliseconds after a HystrixCircuitBreaker trips open that it should wait before trying requests again.
 
 *.withCircuitBreakerForceOpen(true)* and *HystrixCircuitBreaker hystrixCircuitBreaker = HystrixCircuitBreaker.Factory.getInstance(HystrixCommandKey.Factory.asKey("CommandKey"));
@@ -113,6 +132,7 @@ Timeout for command execution - default 1 second
 ######4.2.1 - semaphore
 Show thread names used to execute command (no thread pool used)
 Show what will happen when provide different command key like using counter - use random
+`withExecutionIsolationSemaphoreMaxConcurrentRequests(10)`
 
 #####4.3 ignoring rxjava observeOn() and subscribeOn() - executing observable in hystrixCommand, observeOn() execuites post hystrix in other thread
 Run without any operator - Executed in hystrix thread pool
