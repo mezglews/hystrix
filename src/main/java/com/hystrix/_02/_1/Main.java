@@ -1,4 +1,4 @@
-package com.hystrix._02;
+package com.hystrix._02._1;
 
 import com.hystrix.Utils;
 import com.netflix.hystrix.*;
@@ -18,7 +18,7 @@ public class Main {
                         HystrixCommandGroupKey.Factory.asKey("hystrix-command-group")
                 )
                 .andCommandKey(HystrixCommandKey.Factory.asKey("CommandKey"))
-                .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("ThreadPool-key"))
+//                .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("ThreadPool-key"))
                 .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter().withCoreSize(10))
 
                 .andCommandPropertiesDefaults(
@@ -27,7 +27,7 @@ public class Main {
                 )
         );
 
-//        HystrixCircuitBreaker hystrixCircuitBreaker = null;
+//        HystrixCircuitBreaker hystrixCircuitBreaker;
 
 
         Observable<Void> observable = simpleCommand.toObservable();

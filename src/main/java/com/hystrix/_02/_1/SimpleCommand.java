@@ -1,4 +1,4 @@
-package com.hystrix._02;
+package com.hystrix._02._1;
 
 import com.netflix.hystrix.HystrixCommand;
 import org.apache.log4j.Logger;

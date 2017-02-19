@@ -62,6 +62,7 @@ NonBlocking execution - notify subscriber once new element coming in
 ## 2. Command configuration
 Run Main and show whats logged etc
 
+##### 2.1 Basic configuration
 *andCommandKey()*
 Sets the name of the command executed - by default is the class name
 
@@ -73,6 +74,7 @@ If we logically want these commands grouped together but want them isolated diff
 Discussed in chapter 4 - settings for thread pool and command execution strategy
 
 #####2.2 CB properties
+https://raw.githubusercontent.com/wiki/Netflix/Hystrix/images/circuit-breaker-1280.png
 
 CB properties
 

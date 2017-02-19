@@ -1,6 +1,5 @@
 package com.hystrix._02._2;
 
-import com.hystrix.Utils;
 import com.netflix.hystrix.HystrixCommand;
 import org.apache.log4j.Logger;
 
@@ -22,7 +21,6 @@ public class SimpleCommand extends HystrixCommand<Void> {
     @Override
     protected Void run() throws Exception {
         logger.info("Executing command #" + (counter));
-//        Utils.sleep(12);
         if(shouldFail) {
             throw new RuntimeException("failed!");
         }
