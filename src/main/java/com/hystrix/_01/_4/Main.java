@@ -22,7 +22,7 @@ public class Main {
                 .doOnNext(next -> logger.info("First on next: " + next))
                 .map(next -> "modified " + next)
                 .doOnNext(next -> logger.info("Second onNext: " + next))
-                .map(next -> "heavy modified " + next)
+                .map(next -> "heavily modified: " + next)
                 .subscribe(next -> logger.info("Subscribed and got: " + next));
 
 

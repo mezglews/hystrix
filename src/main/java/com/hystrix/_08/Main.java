@@ -23,7 +23,6 @@ public class Main {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
 
-
         HystrixCommand.Setter setter = HystrixCommand.Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("BasicCommandsGroup"))
                 .andCommandKey(HystrixCommandKey.Factory.asKey("cmd"))
                 .andThreadPoolPropertiesDefaults(
@@ -32,16 +31,16 @@ public class Main {
                 );
 
         for(int i=0; i< 20;i ++) {
-            Thread t = new Thread(() -> {
-                MDC.put("transactionGUID", UUID.randomUUID().toString());
+            MDC.put("transactionGUID", UUID.randomUUID().toString());
                 SimpleCommand command = new SimpleCommand(setter);
-                logger.info(command.execute());
-            });
-            t.start();
+//            Thread t = new Thread(() -> {
+//                logger.info(command.execute());
+//            });
+//            t.start();
 
-//            command.toObservable()
-//                    .onErrorResumeNext(error -> Observable.empty())
-//                    .subscribe(next -> logger.info(next));
+            command.toObservable()
+                    .onErrorResumeNext(error -> Observable.empty())
+                    .subscribe(next -> logger.info(next));
         }
 
 

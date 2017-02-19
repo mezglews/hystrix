@@ -25,7 +25,7 @@ public class Main {
 //                          .withKeepAliveTimeMinutes(1)
 
 //                        .withMaxQueueSize(3)
-//                        .withQueueSizeRejectionThreshold(1)
+//                        .withQueueSizeRejectionThreshold(2)
                 );
         logger.info("Before launching command");
 
@@ -33,8 +33,7 @@ public class Main {
             SimpleCommand simpleCommand = new SimpleCommand(setter.andCommandKey(HystrixCommandKey.Factory.asKey("cmd")));
             simpleCommand.observe();
             logger.info(simpleCommand.getCommandKey().name() +
-                    " response rejected? " + simpleCommand.isResponseRejected() +
-                    ", threadPool rejected? " + simpleCommand.isResponseThreadPoolRejected());
+                    " task rejected? " + simpleCommand.isResponseRejected());
         }
 
         logger.info("After launching command");

@@ -23,7 +23,6 @@ public class Main {
         logger.info("Before launching command");
         command
                 .toObservable()
-
                 .subscribe(aVoid -> logger.info("Finished task!"));
 
         logger.info("After launching command");

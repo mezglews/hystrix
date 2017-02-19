@@ -12,6 +12,7 @@ import java.util.*;
  * User: Szymon Mezglewski
  * Date: 2016-12-08
  */
+//<RequestArgumentType, ResponseType>
 public class BatchCommand extends HystrixCommand< Map<String, User> > {
     private static final Logger LOGGER = Logger.getLogger(BatchCommand.class);
     private final ClientSecurityGateway clientSecurityGateway;

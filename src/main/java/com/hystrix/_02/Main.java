@@ -24,9 +24,6 @@ public class Main {
                 .andCommandPropertiesDefaults(
                         HystrixCommandProperties.Setter()
                                 .withCircuitBreakerEnabled(true)
-//                                .withCircuitBreakerForceOpen(true)
-                                .withExecutionIsolationStrategy(HystrixCommandProperties.ExecutionIsolationStrategy.THREAD)
-                                .withCircuitBreakerSleepWindowInMilliseconds(100)
                 )
         );
 

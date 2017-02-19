@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
 public class SimpleCommand extends HystrixCommand<Void> {
     private final static Logger logger = Logger.getLogger(SimpleCommand.class);
 
-    protected SimpleCommand(Setter setter) {
+    public SimpleCommand(Setter setter) {
         super(setter);
     }
 

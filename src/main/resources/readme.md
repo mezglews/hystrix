@@ -26,10 +26,9 @@
 ##### 5.2 HystrixBadRequestException
 ##### 5.3 unwrapHystrixException()
 
-## 6. Request caching - use HystrixRequestContext, show what happened when close context and reinit
+## 6. Request caching
 
 ## 7. Request batching/collapsing
-        - configure withTimerDelayInMilliseconds (delay), and withMaxRequestsInBatch, without HystrixRequestContext no exception!!
 
 ## 8. Issue with MDC
 
