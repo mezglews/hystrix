@@ -140,6 +140,12 @@ Show thread names used to execute command (no thread pool used)
 Show what will happen when provide different command key like using counter - use random
 `withExecutionIsolationSemaphoreMaxConcurrentRequests(10)`
 
+######4.2.3 - semaphore vs thread in terms of time out
+Show difference between thread isolation  and semaphore.
+For thread isolation a timeout will occur immediately after given time passed
+For semaphore task will finish (even long running)  and after execution timeout exception will occur
+
+
 #####4.3 ignoring rxjava observeOn() and subscribeOn() - executing observable in hystrixCommand, observeOn() execuites post hystrix in other thread
 Run without any operator - Executed in hystrix thread pool
 

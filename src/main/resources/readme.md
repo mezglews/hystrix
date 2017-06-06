@@ -17,6 +17,7 @@
 ##### 4.2 isolation strategy - semaphore vs thread
 ###### 4.2.1 - thread
 ###### 4.2.2 - semaphore (show what will happen when provide different command key like using counter
+###### 4.2.3 - semaphore vs thread in terms of time out
 ##### 4.3 ignoring rxjava observeOn() and subscribeOn()
 
 ## 5. Hystrix error handling
